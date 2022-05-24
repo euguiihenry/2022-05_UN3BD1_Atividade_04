@@ -58,3 +58,6 @@ FROM	pedido;
 
 SELECT	*
 FROM	pedido_detalhe;
+		
+SELECT	*
+FROM	produto;
