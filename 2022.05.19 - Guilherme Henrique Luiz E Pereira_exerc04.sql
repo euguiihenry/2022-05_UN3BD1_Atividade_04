@@ -1,12 +1,12 @@
 /*
-Exercicio 04 - SELECT AT… HAVING
+Exercicio 04 - SELECT AT√â HAVING
 
-Nome: Guilherme	Henriquie Luiz EuzÈbio Pereira
+Nome: Guilherme	Henriquie Luiz Euz√©bio Pereira
 
 */
 
 /*
-Quest„o 01
+Quest√£o 01
 =============================================================================*/
 SELECT		c.cliente AS Cliente,
 			SUM(p.vlrtotal_pedido) AS 'Total'
@@ -18,20 +18,39 @@ HAVING		SUM(p.vlrtotal_pedido) > 1100.00;
 
 
 /*
-Quest„o 02
+Quest√£o 02
 =============================================================================*/
-SELECT		c.categoria,
-			p.produto
-			AVG()
+SELECT		c.categoria AS 'Categoria',
+			p.produto AS 'Produto',
+			AVG(pd.preco_unit*pd.qtde) AS 'M√©dia'
 FROM		categoria c INNER JOIN produto p
 			ON c.codcategoria = p.codcategoria
 			INNER JOIN pedido_detalhe pd
 			ON p.codproduto = pd.codproduto
 			INNER JOIN pedido ped
 			ON pd.codpedido = ped.codpedido
-WHERE		YEAR() = '1997' AND AVG()
-GROUP BY	c.categoria AND p.produto
+WHERE		YEAR(ped.dt_pedido) = '1997'
+GROUP BY	c.categoria,
+			p.produto
+HAVING		AVG(pd.preco_unit*pd.qtde) > 1000.00
+ORDER BY	M√©dia;		
+
+/*
+Quest√£o 03
+=============================================================================*/
+SELECT		cate.categoria AS 'Categoria',	
+			c.pais AS 'Pa√≠s'
+			
+FROM		categoria cate INNER JOIN produto p
+			ON cate.codcategoria = p.codcategoria
+			INNER JOIN pedido_detalhe pd
+			ON p.codproduto = pd.codproduto
+			INNER JOIN 
+
+WHERE		
+GROUP BY	
 HAVING		
+ORDER BY	
 
 SELECT	*
 FROM	categoria;
@@ -47,7 +66,3 @@ FROM	pedido_detalhe;
 		
 SELECT	*
 FROM	produto;
-
-/*
-Quest„o 03
-=============================================================================*/
