@@ -45,12 +45,7 @@ FROM		categoria cate INNER JOIN produto p
 			ON cate.codcategoria = p.codcategoria
 			INNER JOIN pedido_detalhe pd
 			ON p.codproduto = pd.codproduto
-			INNER JOIN 
-
-WHERE		
-GROUP BY	
-HAVING		
-ORDER BY	
+			INNER JOIN  
 
 SELECT	*
 FROM	categoria;
@@ -63,6 +58,3 @@ FROM	pedido;
 
 SELECT	*
 FROM	pedido_detalhe;
-		
-SELECT	*
-FROM	produto;
