@@ -38,26 +38,19 @@ ORDER BY	Média;
 /*
 Questão 03
 =============================================================================*/
-SELECT		cate.categoria AS 'Categoria',	
-			c.pais AS 'País'
-			
+SELECT		c.pais AS 'País',
+			cate.categoria AS 'Categoria',	
+			SUM(pd.preco_unit * pd.qtde - pd.desconto) AS 'Total Gasto'
 FROM		categoria cate INNER JOIN produto p
 			ON cate.codcategoria = p.codcategoria
 			INNER JOIN pedido_detalhe pd
 			ON p.codproduto = pd.codproduto
-			INNER JOIN  
-
-SELECT	*
-FROM	categoria;
-		
-SELECT	*
-FROM	cliente;
-
-SELECT	*
-FROM	pedido;
-
-SELECT	*
-FROM	pedido_detalhe;
-		
-SELECT	*
-FROM	produto;
+			INNER JOIN  pedido ped
+			ON pd.codpedido = ped.codpedido
+			INNER JOIN cliente c
+			ON ped.codcliente = c.codcliente
+WHERE		MONTH(ped.dt_pedido) = 3 AND YEAR(ped.dt_pedido) = 1997
+GROUP BY	c.pais,
+			cate.categoria
+HAVING		SUM(pd.preco_unit * pd.qtde - pd.desconto) < 100.00
+ORDER BY	c.pais;
